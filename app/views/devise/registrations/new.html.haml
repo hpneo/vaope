@@ -1,0 +1,13 @@
+.sessions
+  %h2 Registrarse
+
+  = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+    = f.error_notification
+    .inputs
+      = f.input :email, :autofocus => true, :input_html => {:size => 30}, :label => 'Email:'
+      = f.input :password, :input_html => {:size => 20}, :label => 'Contraseña:'
+      = f.input :password_confirmation, :input_html => {:size => 20}, :label => 'Confirmar contraseña:'
+    .actions
+      = f.button :submit, "Sign up"
+
+  = render :partial => "devise/shared/links"

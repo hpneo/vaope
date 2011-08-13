@@ -1,0 +1,9 @@
+%h2 Crear local
+
+- simple_form_for @place do |f|
+  = f.input :name, :label => 'Nombre:'
+  = f.input :address, :label => 'Dirección:'
+  - f.input :category, :label => 'Categoría:' do
+    = f.select 'category_id', grouped_options_for_select(@categories)
+  = f.input :description, :label => 'Descripción:'
+  = f.submit 'Crear local'

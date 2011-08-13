@@ -8,9 +8,24 @@ class PlacesController < ApplicationController
         conditions[:category_id] = params[:cat].split(',')
       end
       respond_with do |format|
-        format.json { render :json => Place.near(params[:latlng]) }
+        format.json { render :json => Place.near(params[:latlng]).where(conditions) }
       end
     end
+  end
+
+  def show
+    @place = Place.find(params[:id])
+  end
+
+  def new
+    @place = Place.new
+    @categories = {}
+    Category.are_parents.map{|category|
+      @categories[category.name] = category.children.map{|children| [children.name, children.id]}
+    }
+  end
+
+  def edit
   end
   
   def get_by_area_and_category

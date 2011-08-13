@@ -1,5 +1,11 @@
 Vaope::Application.routes.draw do
   
+  devise_for :users do
+    get 'sign_in', :to => 'devise/sessions#new'
+  end
+
+  resources :users
+
   resources :places do
     member do
       get 'mapa'

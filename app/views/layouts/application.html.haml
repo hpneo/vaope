@@ -2,9 +2,11 @@
 %html
   %head
     %title= site_title
-    = stylesheet_link_tag :all
+    = stylesheet_link_tag 'style'
     = javascript_include_tag 'jquery.min'
-    = javascript_include_tag 'http://maps.google.com/maps/api/js?sensor=true'
+    - if params[:controller] == 'home' && params[:action] == 'index'
+      = javascript_include_tag 'http://maps.google.com/maps/api/js?sensor=true'
+      = javascript_include_tag 'home'
     = javascript_include_tag :defaults
     = csrf_meta_tag
     = opengraph_tags
@@ -13,6 +15,10 @@
     #header
       %h1
         %a{:href => root_path}= site_title
+      - if user_signed_in?
+        = render 'layouts/user_options'
+      - else
+        %a#sign_in{:href => sign_in_path} Entrar
     #body
       = yield
     #footer
