@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  parent_id: 1
+  lat: 9.99
+  lng: 9.99
+  description: MyText
+  area_code: MyString
+
+two:
+  name: MyString
+  parent_id: 1
+  lat: 9.99
+  lng: 9.99
+  description: MyText
+  area_code: MyString

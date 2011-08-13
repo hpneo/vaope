@@ -1,0 +1,19 @@
+#map_search
+  #map
+  #categories
+    - @categories.each do |category|
+      %h4
+        = category.name
+      %ul
+        - category.children.each do |children|
+          %li
+            %a{:href => '#find_in_map', :id => "category_#{children.id}"}= children.name
+
+.message
+  %h3 Encuentra restaurantes, bares y tiendas en tu ciudad
+  .column#for_users
+    %p Descubre nuevos lugares para comer, comprar y divertirte. Valóralos y recomiéndaselos a tus amigos.
+    %a.button{:href => '/features'} Más info
+  .column#for_editors
+    %p Da a conocer tus locales favoritos. Agrega fotos y comentarios para hacerlos más interesantes.
+    %a.button{:href => '/info'} Más info

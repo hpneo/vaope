@@ -1,0 +1,25 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  category_id: 1
+  area_id: 1
+  address: MyString
+  description: MyText
+  url: MyString
+  lat: 9.99
+  lng: 9.99
+  rating: 9.99
+  user_id: 1
+
+two:
+  name: MyString
+  category_id: 1
+  area_id: 1
+  address: MyString
+  description: MyText
+  url: MyString
+  lat: 9.99
+  lng: 9.99
+  rating: 9.99
+  user_id: 1
