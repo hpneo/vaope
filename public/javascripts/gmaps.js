@@ -10,12 +10,24 @@ GMaps = function(div_id, lat, lng){
   this.set_center = function(lat, lng){
     this.map.setCenter(new google.maps.LatLng(lat, lng));
   };
-  this.add_marker = function(lat, lng, title){
-    this.markers.push(new google.maps.Marker({
+  this.add_marker = function(lat, lng, options){
+    var marker_options = $.extend({
       position: new google.maps.LatLng(lat, lng),
-      map: this.map,
-      title: title
-    }));
+      map: this.map
+    }, options);
+    
+    var marker = new google.maps.Marker(marker_options);
+
+    google.maps.event.addListener(marker, 'click', function(e){
+      if(options.click)
+        options.click(e);
+    });
+    google.maps.event.addListener(marker, 'dragend', function(e){
+      if(options.dragend)
+        options.dragend(e);
+    });
+
+    this.markers.push(marker);
   };
   this.remove_markers = function(){
     for(index in this.markers){
