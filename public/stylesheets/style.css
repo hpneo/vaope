@@ -24,6 +24,9 @@ a{
 h1, h2, h3, h4, h5, h6{
   margin:0;
 }
+form input[type=submit]{
+  display:block;
+}
 
 #header, #body, #footer{
   width:960px;
@@ -82,6 +85,14 @@ h1, h2, h3, h4, h5, h6{
     padding:10px 8px;
     background:#d8e5f7;
     border:dashed 1px #7ba5e4;
+    border-radius:3px;
+  }
+  #body .places{
+    width:600px;
+    margin:0 auto;
+    padding:10px 8px;
+    background:#e4fce3;
+    border:dashed 1px #9cf499;
     border-radius:3px;
   }
   #body #user_new input, #body #user_new label{
@@ -163,3 +174,21 @@ h1, h2, h3, h4, h5, h6{
         background:#008800;
         box-shadow:0px 0px 10px #005b00;
       }
+
+#body .places label{
+  font-family:'Actor';
+  font-weight:bold;
+  margin-right:6px;
+}
+#body .places textarea{
+  vertical-align:text-top;
+}
+#body .places #map{
+  display:none;
+  margin:5px auto;
+  width:99%;
+  height:350px;
+  background:#d8e5f7;
+  border:dashed 1px #7ba5e4;
+  border-radius:2px;
+}

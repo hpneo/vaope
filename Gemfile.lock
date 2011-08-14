@@ -86,6 +86,7 @@ GEM
       activemodel (~> 3.0)
     term-ansicolor (1.0.6)
     thor (0.14.6)
+    tiny_mce (0.1.4)
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
@@ -105,3 +106,4 @@ DEPENDENCIES
   rails (= 3.0.9)
   rake (= 0.8.7)
   simple_form
+  tiny_mce

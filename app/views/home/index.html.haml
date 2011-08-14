@@ -17,3 +17,7 @@
   .column#for_editors
     %p Da a conocer tus locales favoritos. Agrega fotos y comentarios para hacerlos más interesantes.
     %a.button{:href => '/info'} Más info
+
+- content_for :script do
+  = javascript_include_tag 'http://maps.google.com/maps/api/js?sensor=true'
+  = javascript_include_tag 'home'

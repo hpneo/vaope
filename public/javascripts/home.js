@@ -52,13 +52,11 @@ $(document).ready(function(){
         center = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
       }, function(error){
         center = default_coords;
-        //console.log(error);
-        set_map(center);
       }, {enableHighAccuracy:true, maximumAge:30000, timeout:27000});
     }
     else{
       center = default_coords;
-      set_map(center);
     }
+    set_map(center);
   }
 });

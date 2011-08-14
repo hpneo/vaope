@@ -1,0 +1,10 @@
+$(document).ready(function(){
+  $('#show_map').change(function(){
+    if($(this).attr('checked')){
+     $('#map').slideDown();
+    }
+    else{
+     $('#map').slideUp();
+    }
+  });
+});

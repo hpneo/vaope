@@ -10,5 +10,6 @@ gem 'devise'
 gem 'haml'
 gem 'simple_form'
 gem 'jquery-rails'
+gem 'tiny_mce'
 
 gem 'heroku'

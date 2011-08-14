@@ -1,9 +1,20 @@
-%h2 Crear local
+.places
+  %h2 Crear local
 
-- simple_form_for @place do |f|
-  = f.input :name, :label => 'Nombre:'
-  = f.input :address, :label => 'Dirección:'
-  - f.input :category, :label => 'Categoría:' do
-    = f.select 'category_id', grouped_options_for_select(@categories)
-  = f.input :description, :label => 'Descripción:'
-  = f.submit 'Crear local'
+  - simple_form_for @place do |f|
+    = f.input :name, :label => 'Nombre:'
+    = f.input :address, :label => 'Dirección:'
+    - f.input :category, :label => 'Categoría:' do
+      = f.select 'category_id', grouped_options_for_select(@categories)
+    = f.input :description, :label => 'Descripción:', :input_html => {:rows => 10, :class => 'mceEditor'}
+    = label_tag 'show_map', '¿Mostrar mapa?'
+    = check_box_tag 'show_map'
+    #map
+    = f.input :lat, :as => :hidden
+    = f.input :lng, :as => :hidden
+    = f.submit 'Crear local'
+
+- content_for :script do
+  = include_tiny_mce_if_needed
+  = #javascript_include_tag 'http://maps.google.com/maps/api/js?sensor=true'
+  = javascript_include_tag 'places'
