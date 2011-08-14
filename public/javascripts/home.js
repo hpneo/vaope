@@ -47,16 +47,19 @@ $(document).ready(function(){
     load_places();
   });
   if($('#map').length>0){
+    var center;
     if(navigator.geolocation){
       navigator.geolocation.getCurrentPosition(function(position){
         center = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        set_map(center);
       }, function(error){
         center = default_coords;
+        set_map(center);
       }, {enableHighAccuracy:true, maximumAge:30000, timeout:27000});
     }
     else{
       center = default_coords;
+      set_map(center);
     }
-    set_map(center);
   }
 });
