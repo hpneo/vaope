@@ -1,1 +1,7 @@
 %h2= @user.email
+
+%ul
+- @user.places.each do |place|
+  %li
+    %a{:href => place_path(place)}
+      = place.name

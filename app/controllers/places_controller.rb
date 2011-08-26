@@ -11,17 +11,22 @@ class PlacesController < ApplicationController
     :theme_advanced_resizing_min_width => 580,
     :theme_advanced_resizing_max_width => 580,
     :content_css => '/stylesheets/tiny_mce.css' }, :only => [:new, :edit]
-  respond_to :html, :json
+  
+  respond_to :html, :json, :kml
 
   def index
     conditions = {}
+    conditions[:category_id] = params[:cat].split(',') if params[:cat]
+    conditions[:area_id] = params[:area].split(',') if params[:area]
+    conditions[:user_id] = params[:user] if params[:user]
     if params[:latlng]
-      if params[:cat]
-        conditions[:category_id] = params[:cat].split(',')
-      end
-      respond_with do |format|
-        format.json { render :json => Place.near(params[:latlng]).where(conditions) }
-      end
+      @places = Place.near(params[:latlng], 1.5).where(conditions)
+    else
+      @places = Place.where(conditions)
+    end
+
+    respond_with do |format|
+      format.json { render :json => @places }
     end
   end
 
@@ -30,14 +35,24 @@ class PlacesController < ApplicationController
   end
 
   def new
-    @place = Place.new
-    @categories = {}
-    Category.are_parents.map{|category|
-      @categories[category.name] = category.children.map{|children| [children.name, children.id]}
-    }
+    @place = Place.new(:user_id => current_user.id)
+    get_categories
   end
 
   def edit
+    @place = Place.find(params[:id])
+    get_categories
+  end
+
+  def create
+    @place = Place.create(params[:place])
+    redirect_to place_path(@place)
+  end
+
+  def update
+  end
+
+  def destroy
   end
   
   def get_by_area_and_category
@@ -46,5 +61,13 @@ class PlacesController < ApplicationController
 
     places = Place.where(:area_id => area.id, :category_id => category.id)
   end
+
+  private
+    def get_categories
+      @categories = {}
+      Category.are_parents.map{|category|
+        @categories[category.name] = category.children.map{|children| [children.name, children.id]}
+      }
+    end
 
 end

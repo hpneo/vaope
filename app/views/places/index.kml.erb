@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
+  <Document>
+    <% @places.each do |place| %>
+    <Placemark>
+      <name><%= place.name %></name>
+      <description><![CDATA[<h3><a href="<%= place_url(place) %>"><%= place.name %></a></h3><%= place.description %>]]></description>
+      <Point>
+        <coordinates><%= "#{place.lng},#{place.lat},0" %></coordinates>
+      </Point>
+    </Placemark>
+    <% end %>
+  </Document>
+</kml>
