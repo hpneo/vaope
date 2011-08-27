@@ -8,11 +8,30 @@ GMaps = function(options){
     mapTypeId: google.maps.MapTypeId.ROADMAP
   });
   google.maps.event.addListener(this.map, 'dragend', function(e){
-    options.dragend();
+    if(options.dragend)
+      options.dragend();
   });
   
-  this.set_center = function(lat, lng){
+  this.geolocate = function(options){
+    if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition(function(position){
+        options.success(position);
+        options.always();
+      }, function(error){
+        options.error(error);
+        options.always();
+      }, options.options);
+    }
+    else{
+      options.not_supported();
+      options.always();
+    }
+  }
+
+  this.set_center = function(lat, lng, callback){
     this.map.setCenter(new google.maps.LatLng(lat, lng));
+    if(callback)
+      callback();
   };
   this.get_center = function(){
     return this.map.getCenter();

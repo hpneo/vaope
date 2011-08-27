@@ -1,0 +1,16 @@
+- simple_form_for @place do |f|
+  = f.input :name, :label => 'Nombre:'
+  = f.input :address, :label => 'Dirección:'
+  - f.input :category, :label => 'Categoría:' do
+    = f.select 'category_id', grouped_options_for_select(@categories)
+  = f.input :description, :label => 'Descripción:', :input_html => {:rows => 10, :class => 'mceEditor'}
+  = label_tag 'show_map', '¿Mostrar mapa?'
+  = check_box_tag 'show_map'
+  #map
+  = f.input :lat, :as => :hidden
+  = f.input :lng, :as => :hidden
+  = f.input :user_id, :as => :hidden
+  - if params[:action]=='new'
+    = f.submit 'Crear local'
+  - else
+    = f.submit 'Editar local'

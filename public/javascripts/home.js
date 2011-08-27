@@ -27,6 +27,7 @@ $(document).ready(function(){
     lng: -77.028333,
     dragend: function(){
       map.draw_circle();
+      load_places();
     }
   });
 
@@ -40,19 +41,20 @@ $(document).ready(function(){
     load_places();
   });
   if($('#map').length>0){
-    if(navigator.geolocation){
-      navigator.geolocation.getCurrentPosition(function(position){
-        center = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    map.geolocate({
+      success: function(position){
         map.set_center(position.coords.latitude, position.coords.longitude);
-        map.draw_circle();
-      }, function(error){
+      },
+      error: function(error){
         map.set_center(-12.033333, -77.016667);
+      },
+      not_supported: function(){
+        map.set_center(-12.033333, -77.016667);
+      },
+      always: function(){
         map.draw_circle();
-      }, {enableHighAccuracy:true, maximumAge:30000, timeout:27000});
-    }
-    else{
-      map.set_center(-12.033333, -77.016667);
-      map.draw_circle();
-    }
+      },
+      options: {enableHighAccuracy:true, maximumAge:30000, timeout:27000}
+    });
   }
 });

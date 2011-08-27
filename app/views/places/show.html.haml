@@ -1,1 +1,4 @@
 %h2= @place.name
+%h3= @place.address
+= @place.description.html_safe
+= image_tag @place.static_map(:large), :class => 'map', :alt => @place.name, :title => @place.name

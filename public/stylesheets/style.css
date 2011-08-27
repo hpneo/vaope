@@ -12,7 +12,7 @@
 }
 
 body{
-  background:#f9f9f9;
+  display:block;
   margin:0;
   padding:0;
   font-family:Helvetica, Verdana, sans-serif;
@@ -20,6 +20,9 @@ body{
 }
 a{
   text-decoration:none;
+}
+a img{
+  border:none;
 }
 h1, h2, h3, h4, h5, h6{
   margin:0;
@@ -86,7 +89,7 @@ form input[type=submit]{
     border:dashed 1px #7ba5e4;
     border-radius:3px;
   }
-  #body .places{
+  div.places{
     width:600px;
     margin:0 auto;
     padding:10px 8px;
@@ -174,15 +177,15 @@ form input[type=submit]{
         box-shadow:0px 0px 10px #005b00;
       }
 
-#body .places label{
+div.places label{
   font-family:'Actor';
   font-weight:bold;
   margin-right:6px;
 }
-#body .places textarea{
+div.places textarea{
   vertical-align:text-top;
 }
-#body .places #map{
+div.places #map{
   display:none;
   margin:5px auto;
   width:99%;
@@ -191,3 +194,32 @@ form input[type=submit]{
   border:dashed 1px #7ba5e4;
   border-radius:2px;
 }
+
+ul.places{
+  font-size:1.2em;
+  list-style:none;
+  margin:10px 20px;
+  padding:0;
+}
+  ul.places li{
+    border-bottom:dashed 1px #ccc;
+    padding:5px;
+  }
+  ul.places h3 a{
+    color:#017a06;
+    font-size:1.1em;
+  }
+  ul.places .content{
+    overflow:hidden;
+  }
+    ul.places .content .map{
+      float:right;
+      border-radius:5px;
+    }
+  ul.places small{
+    margin:0 10px;
+    color:#777;
+  }
+  ul.places p{
+    margin:6px 20px;
+  }
