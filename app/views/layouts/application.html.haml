@@ -3,6 +3,7 @@
   %head
     %title= site_title
     = stylesheet_link_tag 'style'
+    = stylesheet_link_tag 'http://twitter.github.com/bootstrap/assets/css/bootstrap-1.2.0.min.css'
     = javascript_include_tag 'jquery.min'
     = javascript_include_tag :defaults
     = yield :script
@@ -16,7 +17,16 @@
       - if user_signed_in?
         = render 'layouts/user_options'
       - else
-        %a#sign_in{:href => sign_in_path} Entrar
+        %ul#user_options
+          %li.sign_in
+            %a#sign_in{:href => sign_in_path} Entrar
+            %ul.auth_options
+              %li.twitter
+                %a{:href => '/auth/twitter'}
+                  %img{:src => '/images/twitter_32.png'} Twitter
+              %li.facebook
+                %a{:href => '#/auth/facebook'}
+                  %img{:src => '/images/facebook_32.png'} Facebook
     #body
       = yield
     #footer

@@ -1,9 +1,13 @@
 Vaope::Application.routes.draw do
   
+  match '/auth/:provider/callback' => 'sessions#create'
+  match '/auth/failure' => 'sessions#failure'
+
   devise_for :users do
     get 'sign_in', :to => 'devise/sessions#new'
   end
 
+  resources :authentications
   resources :users
 
   resources :places do

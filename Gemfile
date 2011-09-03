@@ -6,6 +6,7 @@ gem 'rails', '3.0.9'
 gem 'mysql2', '~> 0.2.11'
 
 gem 'devise'
+gem 'omniauth'
 
 gem 'haml'
 gem 'simple_form'

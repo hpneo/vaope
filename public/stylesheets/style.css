@@ -47,37 +47,45 @@ form input[type=submit]{
     #header h1 a{
       color:#ff3333;
     }
-  #header #sign_in{
-    margin-top:1.5em;
-    float:right;
-    padding:8px 18px;
-    color:white;
-    background:#13940e;
-    border-radius:5px;
-  }
-  #header #sign_in:hover{
-    background:#16b110;
-  }
   #header #user_options{
     float:right;
     list-style:none;
     margin:0;
     padding:0;
-    margin-top:1.5em;
-    font-family:'Actor';
+    line-height:50px;
+    font-family:'Actor' !important;
     font-weight:bold;
-    font-size:1.1em;
+    font-size:1.5em !important;
   }
+    #header #user_options li.sign_in{
+    }
+    #header #user_options .auth_options{
+      display:none;
+      margin:0;
+      margin-left:-20px;
+      position:absolute;
+      z-index:616;
+      background:#fcfcfc;
+      border-radius:3px;
+      border:solid 1px #f0f0f0;
+      box-shadow:1px 1px 1px #fcfcfc;
+    }
+      #header #user_options .auth_options li{
+        display:block;
+        font-size:0.8em;
+      }
+        #header #user_options .auth_options li img{
+          vertical-align:middle;
+          margin-right:3px;
+          width:28px;
+        }
     #header #user_options li{
       display:inline-block;
       padding:8px 18px;
     }
-      #header #user_options li a{
-        color:#f0606c;
-      }
 #body{}
   #body h2, #body h3, #body h4{
-    font-family:'Actor';
+    font-family:'Actor' !important;
     font-weight:bold;
     color:#235aad;
   }
