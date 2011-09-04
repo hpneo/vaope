@@ -16,9 +16,14 @@ body{
   margin:0;
   padding:0;
   font-family:Helvetica, Verdana, sans-serif;
-  font-size:14px;
+  font-size:13px;
+  line-height:18px;
 }
 a{
+  color:#0069D6;
+  text-decoration:none;
+}
+a:hover{
   text-decoration:none;
 }
 a img{
@@ -26,9 +31,6 @@ a img{
 }
 h1, h2, h3, h4, h5, h6{
   margin:0;
-}
-form input[type=submit]{
-  display:block;
 }
 
 #header, #body, #footer{
@@ -43,6 +45,8 @@ form input[type=submit]{
     font-size:4em;
     font-family:'Leckerli One';
     float:left;
+    margin-bottom:18px;
+    line-height:36px;
   }
     #header h1 a{
       color:#ff3333;
@@ -52,16 +56,21 @@ form input[type=submit]{
     list-style:none;
     margin:0;
     padding:0;
+    font-family:'Actor';
     line-height:50px;
-    font-family:'Actor' !important;
-    font-weight:bold;
-    font-size:1.5em !important;
+    font-size:1.2em;
   }
+    #header #user_options li{
+      display:inline-block;
+      padding:8px 16px;
+      line-height:18px;
+    }
     #header #user_options li.sign_in{
     }
     #header #user_options .auth_options{
       display:none;
       margin:0;
+      padding:0;
       margin-left:-20px;
       position:absolute;
       z-index:616;
@@ -74,19 +83,18 @@ form input[type=submit]{
         display:block;
         font-size:0.8em;
       }
+      #header #user_options .auth_options li:hover{
+        background:#f6f6f6;
+      }
         #header #user_options .auth_options li img{
           vertical-align:middle;
+          margin:0;
           margin-right:3px;
           width:28px;
         }
-    #header #user_options li{
-      display:inline-block;
-      padding:8px 18px;
-    }
 #body{}
   #body h2, #body h3, #body h4{
-    font-family:'Actor' !important;
-    font-weight:bold;
+    font-family:'Actor';
     color:#235aad;
   }
   #body .sessions{
@@ -105,17 +113,6 @@ form input[type=submit]{
     border:dashed 1px #9cf499;
     border-radius:3px;
   }
-  #body #user_new input, #body #user_new label{
-    font-size:1.1em;
-  }
-  #body #user_new .input{
-    margin:6px 12px;
-  }
-    #body #user_new .input.string label{
-      font-family:'Actor';
-      font-weight:bold;
-      display:block;
-    }
   #body #map_search{
     overflow:hidden;
     width:940px;
@@ -184,15 +181,15 @@ form input[type=submit]{
         background:#008800;
         box-shadow:0px 0px 10px #005b00;
       }
-
+/*
 div.places label{
   font-family:'Actor';
-  font-weight:bold;
   margin-right:6px;
 }
 div.places textarea{
   vertical-align:text-top;
 }
+*/
 div.places #map{
   display:none;
   margin:5px auto;
@@ -231,3 +228,38 @@ ul.places{
   ul.places p{
     margin:6px 20px;
   }
+
+.place_actions{
+  float:right;
+  padding:10px;
+}
+.share_options{
+  display:none;
+  position:absolute;
+  z-index:616;
+  margin-top:2px;
+  margin-left:-10px;
+}
+  .share_options .arrow{
+    position:absolute;
+    width:0;
+    height:0;
+    top: 0;
+    left: 50%;
+    margin-left: -5px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #636363;
+  }
+  .share_options .inner{
+    margin-top:4px;
+    background:#fcfcfc;
+    border-radius:3px;
+    border:solid 2px rgba(99, 99, 99, 0.8);
+    box-shadow:0 3px 7px rgba(99, 99, 99, 0.3);
+  }
+    .share_options ul{
+      margin:0;
+      padding:8px 16px;
+      font-size:1.1em;
+    }

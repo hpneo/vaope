@@ -1,11 +1,11 @@
 function add_marker(){
-  map.add_marker(map.get_center().Oa, map.get_center().Pa, {
+  map.add_marker(map.get_center().lat(), map.get_center().lng(), {
     title: 'Nuevo local',
     draggable: true,
     animation: google.maps.Animation.Ek,
     dragend: function(e){
-      $('#place_lat').val(e.latLng.Oa);
-      $('#place_lng').val(e.latLng.Pa);
+      $('#place_lat').val(e.latLng.lat());
+      $('#place_lng').val(e.latLng.lng());
     },
     click: function(e){
       console.log(e);
@@ -14,8 +14,8 @@ function add_marker(){
 }
 
 function marker_to_input(){
-  $('#place_lat').val(map.markers[0].position.Oa);
-  $('#place_lng').val(map.markers[0].position.Pa);
+  $('#place_lat').val(map.markers[0].position.lat());
+  $('#place_lng').val(map.markers[0].position.lng());
 }
 
 $(document).ready(function(){

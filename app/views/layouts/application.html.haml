@@ -2,8 +2,9 @@
 %html
   %head
     %title= site_title
+    = stylesheet_link_tag 'bootstrap'
     = stylesheet_link_tag 'style'
-    = stylesheet_link_tag 'http://twitter.github.com/bootstrap/assets/css/bootstrap-1.2.0.min.css'
+    = stylesheet_link_tag 'additional'
     = javascript_include_tag 'jquery.min'
     = javascript_include_tag :defaults
     = yield :script
@@ -19,7 +20,7 @@
       - else
         %ul#user_options
           %li.sign_in
-            %a#sign_in{:href => sign_in_path} Entrar
+            %a.btn.success{:href => sign_in_path} Entrar
             %ul.auth_options
               %li.twitter
                 %a{:href => '/auth/twitter'}

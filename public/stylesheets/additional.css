@@ -1,0 +1,6 @@
+.gmnoprint input, .gmnoprint label{
+  display:inline !important;
+  width:auto !important;
+  font-size:12px !important;
+  float:none !important;
+}

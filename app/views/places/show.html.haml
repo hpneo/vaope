@@ -1,4 +1,20 @@
-%h2= @place.name
-%h3= @place.address
-= @place.description.html_safe
-= image_tag @place.static_map(:large), :class => 'map', :alt => @place.name, :title => @place.name
+.row
+  .span11.columns
+    %h2= @place.name
+    %h3= @place.address
+    = @place.description.html_safe
+    = image_tag @place.static_map(:large), :class => 'map', :alt => @place.name, :title => @place.name
+  .span5.columns
+    .place_actions.well
+      %a.btn.share{:href => "#share_#{@place.id}"} Compartir
+      - if current_user && @place.user && @place.user==current_user
+        %a.btn{:href => edit_place_path} Editar
+        %a.btn.danger{:href => place_path} Eliminar
+      .share_options{:id => "share_#{@place.id}"}
+        .arrow
+        .inner
+          %ul.unstyled
+            %li
+              %a{:href => ''} Twitter
+            %li
+              %a{:href => ''} Facebook

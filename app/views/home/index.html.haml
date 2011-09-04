@@ -13,10 +13,10 @@
   %h3 Encuentra restaurantes, bares y tiendas en tu ciudad
   .column#for_users
     %p Descubre nuevos lugares para comer, comprar y divertirte. Valóralos y recomiéndaselos a tus amigos.
-    %a.button{:href => '/features'} Más info
+    %a.btn.large.info{:href => '/features'} Entérate de más
   .column#for_editors
     %p Da a conocer tus locales favoritos. Agrega fotos y comentarios para hacerlos más interesantes.
-    %a.button{:href => '/info'} Más info
+    %a.btn.large.success{:href => '/info'} Entérate de más
 
 - content_for :script do
   = javascript_include_tag 'http://maps.google.com/maps/api/js?sensor=true'

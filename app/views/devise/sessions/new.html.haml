@@ -2,11 +2,9 @@
   %h2 Entrar
 
   = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-    .inputs
-      = f.input :email, :required => false, :autofocus => true, :input_html => {:size => 30}, :label => 'Email:'
-      = f.input :password, :required => false, :input_html => {:size => 20}, :label => 'Contraseña:'
-      = f.input :remember_me, :as => :boolean, :label => 'Recordar mi sesión' if devise_mapping.rememberable?
-    .actions
-      = f.button :submit, "Entrar"
+    = f.input :email, :required => false, :autofocus => true, :input_html => {:size => 30}, :label => 'Email:'
+    = f.input :password, :required => false, :input_html => {:size => 20}, :label => 'Contraseña:'
+    = f.input :remember_me, :as => :boolean, :label => 'Recordar mi sesión' if devise_mapping.rememberable?
+    = f.button :submit, "Entrar", :class => 'btn large primary'
 
   = render :partial => "devise/shared/links"

@@ -1,7 +1,13 @@
 %ul#user_options
   %li
-    %a{:href => user_path(current_user)}= current_user.name
+    %a{:href => user_path(current_user)}
+      - if current_user.name.blank?
+        = current_user.email
+      - else
+        = current_user.name
   %li
     %a{:href => new_place_path} Crear local
+  %li
+    %a{:href => '/opciones'} Opciones
   %li
     %a{:href => destroy_user_session_path} Salir
