@@ -9,11 +9,20 @@ class Place < ActiveRecord::Base
                   latlng = latlng.split(',')
                   lat = latlng[0]
                   lng = latlng[1]
-                  {
-                    :select => "*, (6371 * ACOS(COS(RADIANS(#{lat})) * COS(RADIANS(lat)) * COS(RADIANS(lng) - RADIANS(#{lng})) + SIN(RADIANS(#{lat})) * SIN(RADIANS(lat)))) AS distance",
-                    :having => "distance < #{distance}",
-                    :order => 'distance'
-                  }
+
+                  case connection.adapter_name.downcase
+                    when 'mysql2'
+                      {
+                        :select => "*, (6371 * ACOS(COS(RADIANS(#{lat})) * COS(RADIANS(lat)) * COS(RADIANS(lng) - RADIANS(#{lng})) + SIN(RADIANS(#{lat})) * SIN(RADIANS(lat)))) AS distance",
+                        :having => "distance < #{distance}",
+                        :order => 'distance'
+                      }
+                    else
+                      {
+                        :select => "(ACOS(least(1,COS(#{lat})*COS(#{lng})*COS(RADIANS(lat))*COS(RADIANS(lng))+COS(#{lat})*SIN(#{lng})*COS(RADIANS(lat))*SIN(RADIANS(lng))+SIN(#{lat})*SIN(RADIANS(lat))))*#{distance}) AS distance",
+                        :order => 'distance'
+                      }
+                  end
                 }
   
   MAP_SIZES = {:square => '150x150', :thumb => '300x200', :medium => '600x300', :large => '900x400'}
