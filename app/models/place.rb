@@ -20,7 +20,7 @@ class Place < ActiveRecord::Base
                     else
                       {
                         :select => "*, (ACOS(least(1,COS(#{lat})*COS(#{lng})*COS(RADIANS(lat))*COS(RADIANS(lng))+COS(#{lat})*SIN(#{lng})*COS(RADIANS(lat))*SIN(RADIANS(lng))+SIN(#{lat})*SIN(RADIANS(lat))))*#{distance}) AS distance",
-                        :having => "distance < #{distance}",
+                        :where => "distance < #{distance}",
                         :order => 'distance'
                       }
                   end
