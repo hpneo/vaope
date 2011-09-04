@@ -8,6 +8,8 @@ gem 'mysql2', '~> 0.2.11'
 gem 'devise'
 gem 'omniauth'
 
+gem 'geocoder'
+
 gem 'haml'
 gem 'simple_form'
 gem 'jquery-rails'

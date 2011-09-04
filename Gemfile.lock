@@ -41,6 +41,7 @@ GEM
     faraday (0.4.6)
       addressable (>= 2.1.1)
       rack (>= 1.0.1)
+    geocoder (1.0.2)
     haml (3.1.2)
     heroku (2.5.2)
       launchy (>= 0.3.2)
@@ -144,6 +145,7 @@ PLATFORMS
 
 DEPENDENCIES
   devise
+  geocoder
   haml
   heroku
   jquery-rails
