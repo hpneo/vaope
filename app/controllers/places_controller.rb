@@ -46,22 +46,19 @@ class PlacesController < ApplicationController
 
   def create
     @place = Place.create(params[:place])
+=begin
     areas = Area.near(@place.lat, @place.lng).all
     if areas.count==1
       @place.area = areas.first
       @place.save
     end
+=end
     redirect_to place_path(@place)
   end
 
   def update
     @place = Place.find(params[:id])
     @place.update_attributes(params[:place])
-    areas = Area.near(@place.lat, @place.lng).all
-    if areas.count==1
-      @place.area = areas.first
-      @place.save
-    end
     redirect_to place_path(@place)
   end
 
