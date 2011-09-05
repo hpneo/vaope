@@ -10,9 +10,9 @@ class Place < ActiveRecord::Base
                   lat = latlng[0]
                   lng = latlng[1]
                   {
-                    :select => "*, (6371 * ACOS(COS(RADIANS(#{lat})) * COS(RADIANS(lat)) * COS(RADIANS(lng) - RADIANS(#{lng})) + SIN(RADIANS(#{lat})) * SIN(RADIANS(lat)))) AS 'distance'",
-                    :having => "'distance' < #{distance}",
-                    :order => "'distance'"
+                    :select => "*, (6371 * ACOS(COS(RADIANS(#{lat})) * COS(RADIANS(lat)) * COS(RADIANS(lng) - RADIANS(#{lng})) + SIN(RADIANS(#{lat})) * SIN(RADIANS(lat)))) AS \"distance\"",
+                    :having => " \"distance\" < #{distance}",
+                    :order => " \"distance\""
                   }
                 }
   
