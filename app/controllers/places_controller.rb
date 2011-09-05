@@ -20,7 +20,10 @@ class PlacesController < ApplicationController
     conditions[:area_id] = params[:area].split(',') if params[:area]
     conditions[:user_id] = params[:user] if params[:user]
     if params[:latlng]
-      @places = Place.near(params[:latlng], 1.5).where(conditions)
+      latlng = params[:latlng].split(',')
+      latlng[0] = latlng[0].to_d
+      latlng[1] = latlng[1].to_d
+      @places = Place.near(latlng, 0.93205678).where(conditions)
     else
       @places = Place.where(conditions)
     end
