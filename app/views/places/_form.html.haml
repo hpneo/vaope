@@ -1,8 +1,8 @@
 - simple_form_for @place do |f|
   = f.input :name, :label => 'Nombre:'
   = f.input :address, :label => 'Dirección:'
-  - f.input :category, :label => 'Categoría:' do
-    = f.select :category_id, grouped_options_for_select(@categories), {}, :class => 'btn'
+  - f.input :category_id, :label => 'Categoría:' do
+    = select :place, :category_id, grouped_options_for_select(@categories, @place.category_id), {}, :class => 'btn'
   = f.input :description, :label => 'Descripción:', :input_html => {:rows => 10, :class => 'mceEditor'}
   = label_tag 'show_map', '¿Mostrar mapa?'
   = check_box_tag 'show_map'
