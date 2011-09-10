@@ -11,7 +11,11 @@ function load_places(){
             title: item.name,
             animation: google.maps.Animation.DROP,
             click: function(e){
-              console.log(e);
+              var infoWindow = new google.maps.InfoWindow({
+                content: '<h2><a href="/places/'+item.id+'">'+item.name+'</a></h2position>',
+                position: e.latLng
+              });
+              infoWindow.open(map, map.markers[map.markers.length-1]);
             }
           });
         }

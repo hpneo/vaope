@@ -4,3 +4,37 @@
   font-size:12px !important;
   float:none !important;
 }
+
+.block{
+  clear: both;
+}
+
+.btn.smaller{
+  padding: 4px 8px 4px;
+  font-size: 11px;
+}
+
+ul.list li{
+  padding-bottom: 5px;
+  border-bottom: dashed 1px #ccc;
+}
+
+h1 small, h2 small, h3 small, h4 small, h5 small, h6 small{
+  color: #888;
+}
+
+.user_avatar{
+  width:30px;
+  vertical-align:middle;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.user_avatar.large{
+  width:50px;
+}
+
+.inline{
+  display: inline;
+}

@@ -8,6 +8,15 @@ class User < ActiveRecord::Base
 
   has_many :places
 
+  def avatar
+    case self.provider
+      when 'facebook'
+        "http://graph.facebook.com/#{self.uid}/picture"
+      else
+        ""
+    end
+  end
+
   def self.create_with_omniauth(auth)
     user = User.new
     user.provider = auth['provider']

@@ -5,7 +5,7 @@
     = @place.description.html_safe
     = image_tag @place.static_map(:large), :class => 'map', :alt => @place.name, :title => @place.name
   .span5.columns
-    .place_actions.well
+    .place_actions.well.block
       %a.btn.share{:href => "#share_#{@place.id}"} Compartir
       - if current_user && @place.user && @place.user==current_user
         %a.btn{:href => edit_place_path} Editar
@@ -15,6 +15,26 @@
         .inner
           %ul.unstyled
             %li
-              %a{:href => ''} Twitter
+              %a{:href => 'https://twitter.com/share'} Twitter
             %li
-              %a{:href => ''} Facebook
+              %a{:href => "http://www.facebook.com/sharer.php?u=#{URI.escape(place_url(@place))}"} Facebook
+    .place_actions.block
+      Creado por
+      %a{:href => user_path(@place.user)}
+        %img.user_avatar{:src => @place.user.avatar}
+        = @place.user.name
+    - if @place.nearbys.all.count > 0
+      .block
+      %h3 Está cerca a...
+      - @place.nearbys.all.each do |place|
+        %ul.unstyled.list
+          %li
+            %h4
+              %a{:href => place_path(place)}
+                = place.name
+                %small
+                  &mdash;
+                  = place.address
+            - if place.category
+              %a.btn.info.smaller{:href => category_path(place.category)}
+                = place.category.name
