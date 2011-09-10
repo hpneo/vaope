@@ -1,0 +1,9 @@
+%li
+  %h3
+    %a{:href => place_path(place)}
+      = place.name
+  %small= place.address
+  .content
+    %a{:href => place_path(place)}
+      = image_tag place.static_map(:thumb), :class => 'map', :alt => place.name, :title => place.name
+    = place.description.html_safe

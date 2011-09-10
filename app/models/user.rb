@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
       when 'facebook'
         "http://graph.facebook.com/#{self.uid}/picture"
       else
-        ""
+        "http://api.twitter.com/1/users/profile_image?user_id=#{self.uid}"
     end
   end
 

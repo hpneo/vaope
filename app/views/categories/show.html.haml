@@ -1,0 +1,8 @@
+.row
+  .span11.columns
+    %ul.places
+      - @category.places.each do |place|
+        = render :partial => 'shared/place', :locals => {:place => place}
+  .span5.columns
+    .block
+      %h2.inline= @category.name

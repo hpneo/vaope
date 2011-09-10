@@ -12,16 +12,11 @@
       = @user.name
     %ul.places
       - @user.places.each do |place|
-        %li
-          %h3
-            %a{:href => place_path(place)}
-              = place.name
-          %small= place.address
-          .content
-            %a{:href => place_path(place)}
-              = image_tag place.static_map(:thumb), :class => 'map', :alt => place.name, :title => place.name
-            = place.description.html_safe
+        = render :partial => 'shared/place', :locals => {:place => place}
   .span5.columns
     .block
       %img.user_avatar.large{:src => @user.avatar}
       %h2.inline= @user.name
+    - if current_user and current_user != @user
+      .block.actions
+        %a.btn.primary{:href => friend_user_path(@user)} Sé su amigo

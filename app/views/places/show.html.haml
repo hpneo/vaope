@@ -15,18 +15,18 @@
         .inner
           %ul.unstyled
             %li
-              %a{:href => 'https://twitter.com/share'} Twitter
+              %a.share_link#share_twitter{:href => 'https://twitter.com/share'} Twitter
             %li
-              %a{:href => "http://www.facebook.com/sharer.php?u=#{URI.escape(place_url(@place))}"} Facebook
+              %a.share_link#share_facebook{:href => "http://www.facebook.com/sharer.php?u=#{URI.escape(place_url(@place))}"} Facebook
     .place_actions.block
       Creado por
       %a{:href => user_path(@place.user)}
         %img.user_avatar{:src => @place.user.avatar}
         = @place.user.name
-    - if @place.nearbys.all.count > 0
+    - if @place.nearbys(0.93205678).all.count > 0
       .block
       %h3 Está cerca a...
-      - @place.nearbys.all.each do |place|
+      - @place.nearbys(0.93205678).all.each do |place|
         %ul.unstyled.list
           %li
             %h4

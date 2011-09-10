@@ -8,7 +8,11 @@ Vaope::Application.routes.draw do
   end
 
   resources :authentications
-  resources :users
+  resources :users do
+    member do
+      get 'friend'
+    end
+  end
 
   resources :places do
     member do
