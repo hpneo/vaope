@@ -11,7 +11,7 @@ function load_places(){
             title: item.name,
             animation: google.maps.Animation.DROP,
             infoWindow: {
-              content: '<h2><a href="/places/'+item.id+'">'+item.name+'</a></h2position>'
+              content: '<h2><a href="/places/'+item.id+'">'+item.name+'</a></h2>'
             }
           });
         }
