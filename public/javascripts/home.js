@@ -10,12 +10,8 @@ function load_places(){
           map.add_marker(item.lat, item.lng, {
             title: item.name,
             animation: google.maps.Animation.DROP,
-            click: function(e){
-              var infoWindow = new google.maps.InfoWindow({
-                content: '<h2><a href="/places/'+item.id+'">'+item.name+'</a></h2position>',
-                position: e.latLng
-              });
-              infoWindow.open(map, map.markers[map.markers.length-1]);
+            infoWindow: {
+              content: '<h2><a href="/places/'+item.id+'">'+item.name+'</a></h2position>'
             }
           });
         }
@@ -32,6 +28,14 @@ $(document).ready(function(){
     dragend: function(){
       map.draw_circle();
       load_places();
+    },
+    click: function(e){
+      console.log(e.latLng.lat());
+      console.log(e.latLng.lng());
+      map.set_center(e.latLng.lat(), e.latLng.lng(), function(){
+        map.draw_circle();
+        load_places();
+      });
     }
   });
 
